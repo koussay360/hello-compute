@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المهندس محمد طه العلوي | خبير أنظمة التبريد والتحكم الإلكتروني</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marhey:wght@700&family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f7e8c3;
+            --dark-bg: #050a14;
+            --card-bg: #111827;
+            --card-hover: #1e293b;
+            --whatsapp-green: #25D366;
+            --email-red: #ea4335;
+            --call-blue: #007bff;
+            --gradient-gold: linear-gradient(135deg, #d4af37, #f7e8c3);
+            --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* شريط التنقل */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 15px 5%;
+            background: rgba(5, 10, 20, 0.98);
+        }
+        
+        .logo {
+            font-family: 'Marhey', sans-serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section محسّن */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(5, 10, 20, 0.85), rgba(5, 10, 20, 0.9)), url('https://images.unsplash.com/photo-1621905252507-b354bcadcabc?q=80&w=2070');
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.1;
+            top: 10%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.1;
+            bottom: 10%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .hero h2 { 
+            font-family: 'Marhey', sans-serif; 
+            color: var(--gold); 
+            font-size: 1.8rem; 
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .hero h1 { 
+            font-size: clamp(3rem, 10vw, 5rem); 
+            font-weight: 800; 
+            margin: 0;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        .hero p { 
+            font-size: 1.3rem; 
+            color: #94a3b8; 
+            max-width: 700px; 
+            margin: 25px 0 40px;
+            line-height: 1.6;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--dark-bg);
+            box-shadow: var(--shadow-gold);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-5px);
+        }
+        
+        /* القسم الجديد: نبذة عني */
+        .about {
+            padding: 120px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-img {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-gold);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content h2 {
+            font-family: 'Marhey', sans-serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+        
+        .about-content p {
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .stat-box {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .stat-box:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+        
+        .stat-box i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .stat-box h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        /* Services محسّن */
+        .services { 
+            padding: 120px 10%;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        
+        .section-title h2 {
+            font-family: 'Marhey', sans-serif;
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+        
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 30px; 
+        }
+        
+        .card { 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border-radius: 24px; 
+            border: 1px solid rgba(255,255,255,0.05); 
+            transition: 0.4s; 
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-gold);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+        }
+        
+        .card:hover { 
+            transform: translateY(-15px); 
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold);
+        }
+        
+        .card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .card i {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            background: rgba(212, 175, 55, 0.1);
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+        }
+        
+        .card h3 { 
+            color: var(--gold); 
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .card p {
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        /* قسم الشهادات */
+        .testimonials {
+            padding: 120px 10%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 20px;
+            border-left: 5px solid var(--gold);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .client-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-left: 20px;
+        }
+        
+        .client-info h4 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .client-info p {
+            color: #94a3b8;
+        }
+        
+        .testimonial-content p {
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        
+        .stars {
+            color: var(--gold);
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+        
+        /* Contact Section محسّن */
+        .contact-section { 
+            background: white; 
+            color: var(--dark-bg); 
+            padding: 120px 10%; 
+            border-radius: 100px 100px 0 0; 
+            text-align: center; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.1;
+            top: -100px;
+            left: -100px;
+        }
+        
+        .form-box { 
+            max-width: 700px; 
+            margin: 0 auto; 
+            background: #f8fafc; 
+            padding: 50px; 
+            border-radius: 40px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+            text-align: right;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #334155;
+        }
+        
+        input, select, textarea {
+            width: 100%; 
+            padding: 18px 20px; 
+            border: 2px solid #e2e8f0; 
+            border-radius: 15px;
+            font-family: 'Tajawal'; 
+            font-size: 1rem; 
+            box-sizing: border-box;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        
+        .submit-btn {
+            color: white; 
+            padding: 22px; 
+            width: 100%; 
+            border: none; 
+            border-radius: 15px;
+            font-size: 1.2rem; 
+            font-weight: 800; 
+            cursor: pointer; 
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        
+        .submit-btn:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 25px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            width: 200px;
+        }
+        
+        .contact-option:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-option i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .contact-option.whatsapp i { color: var(--whatsapp-green); }
+        .contact-option.call i { color: var(--call-blue); }
+        .contact-option.email i { color: var(--email-red); }
+        
+        /* Footer محسّن */
+        footer { 
+            padding: 60px 5% 30px; 
+            text-align: center; 
+            color: #475569; 
+            background: #f1f5f9;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: right;
+        }
+        
+        .footer-logo {
+            font-family: 'Marhey', sans-serif;
+            font-size: 2rem;
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links h4, .footer-contact h4 {
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #475569;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            color: var(--dark-bg);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .social-icons a:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+        }
+        
+        /* تحسينات للجوّال */
+        @media (max-width: 992px) {
+            .about {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 5%;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: rgba(5, 10, 20, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: right 0.4s;
+                border-left: 1px solid rgba(212, 175, 55, 0.2);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-section {
+                border-radius: 60px 60px 0 0;
+                padding: 80px 5%;
+            }
+            
+            .form-box {
+                padding: 30px;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* تأثيرات scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <i class="fas fa-cogs"></i>
+            <span>المهندس محمد طه العلوي</span>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home">الرئيسية</a>
+            <a href="#about">نبذة عني</a>
+            <a href="#services">الخدمات</a>
+            <a href="#testimonials">الشهادات</a>
+            <a href="#contact">اتصل بي</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>إتقان هندسي بمقاييس عالمية</h2>
+        <h1>محمد طه العلوي</h1>
+        <p>خبير صيانة اللوحات الإلكترونية وأنظمة التبريد المتطورة بخبرة تزيد عن 15 عاماً في تقديم حلول تقنية مبتكرة.</p>
+        
+        <div class="hero-btns">
+            <a href="#booking" style="text-decoration: none;">
+                <button class="btn-primary">
+                    <i class="fas fa-tools"></i>
+                    اطلب الخدمة الآن
+                </button>
+            </a>
+            <a href="#contact" style="text-decoration: none;">
+                <button class="btn-secondary">
+                    <i class="fas fa-phone-alt"></i>
+                    تواصل معي
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <!-- قسم نبذة عني -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070" alt="المهندس محمد طه العلوي">
+        </div>
+        
+        <div class="about-content fade-in">
+            <h2>نبذة عن المهندس</h2>
+            <p>مهندس متخصص في أنظمة التبريد والتحكم الإلكتروني مع أكثر من 15 عاماً من الخبرة في صيانة وإصلاح اللوحات الإلكترونية المعقدة وتصميم أنظمة التبريد بكفاءة عالية.</p>
+            <p>حاصل على شهادات معتمدة من شركات عالمية مثل سامسونج وإل جي ودايكين، مع التركيز على تقديم حلول تقنية مبتكرة تحقق أعلى مستويات الكفاءة وتوفر الطاقة.</p>
+            <p>أعمل على تقديم خدمة متكاملة تبدأ من التشخيص الدقيق وحتى التنفيذ والضمان، مع الالتزام بأعلى معايير الجودة والسلامة.</p>
+            
+            <div class="stats">
+                <div class="stat-box">
+                    <i class="fas fa-medal"></i>
+                    <h3>15+</h3>
+                    <p>سنوات خبرة</p>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>1200+</h3>
+                    <p>مشروع منفذ</p>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-user-check"></i>
+                    <h3>98%</h3>
+                    <p>رضا العملاء</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title fade-in">
+            <h2>خدماتي المتخصصة</h2>
+            <p>أقدم مجموعة متكاملة من الخدمات الهندسية المتخصصة في مجال التبريد والتحكم الإلكتروني</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="card fade-in">
+                <i class="fas fa-microchip"></i>
+                <h3>🔬 صيانة الكارت الإلكتروني</h3>
+                <p>إصلاح دقيق للوحات التحكم الإلكترونية بجميع أنواعها بدلاً من الاستبدال المكلف. تشخيص الأعطال الإلكترونية وإصلاح المكونات التالفة مع ضمان الجودة.</p>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-snowflake"></i>
+                <h3>❄️ كفاءة التبريد</h3>
+                <p>حلول تقنية لرفع كفاءة تبريد المكيفات وتقليل استهلاك الطاقة. تحسين أداء أنظمة التبريد وتصميم حلول مخصصة للمنشآت الكبيرة.</p>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-shield-alt"></i>
+                <h3>🛠️ الصيانة الوقائية</h3>
+                <p>فحص شامل لضمان عمل الجهاز بأقصى طاقة في أصعب الظروف. برامج صيانة دورية لمنع الأعطال وضمان استمرارية التشغيل.</p>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>⚡ تحسين الأداء</h3>
+                <p>ترقية أنظمة التبريد الحالية لتحقيق كفاءة أعلى وتوفير الطاقة. تركيب أنظمة تحكم ذكية لتحسين استهلاك الطاقة.</p>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-cogs"></i>
+                <h3>🔧 صيانة متكاملة</h3>
+                <p>خدمة صيانة شاملة لأنظمة التبريد المركزية والمكيفات المنفصلة. تشخيص وعلاج جميع الأعطال الميكانيكية والكهربائية.</p>
+            </div>
+            <div class="card fade-in">
+                <i class="fas fa-headset"></i>
+                <h3>📞 استشارات فنية</h3>
+                <p>تقديم استشارات فنية متخصصة لاختيار أنظمة التبريد المناسبة. دراسات جدوى وتقييم لأنظمة التبريد الحالية والمستقبلية.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الشهادات -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-title fade-in">
+            <h2>رأي عملائي</h2>
+            <p>تستطيع الثقة في جودة عملي من خلال تجارب عملائي السابقين</p>
+        </div>
+        
+        <div class="testimonial-slider">
+            <div class="testimonial fade-in">
+                <div class="testimonial-header">
+                    <div class="client-avatar">أح</div>
+                    <div class="client-info">
+                        <h4>أحمد السعدون</h4>
+                        <p>مدير فندق القصر</p>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <p>"المهندس محمد قام بإصلاح نظام التبريد المركزي بالفندق خلال 24 ساعة فقط، بعد أن فشل 3 فنيين آخرين في تشخيص العطل. خدمة احترافية وسريعة."</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial fade-in">
+                <div class="testimonial-header">
+                    <div class="client-avatar">سع</div>
+                    <div class="client-info">
+                        <h4>سعيد القحطاني</h4>
+                        <p>مالك مركز تجاري</p>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <p>"كنا نعاني من ارتفاع فاتورة الكهرباء بسبب نظام التبريد. بعد تدخل المهندس محمد، انخفض الاستهلاك بنسبة 35% مع تحسن كفاءة التبريد. أنصح به بشدة."</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial fade-in">
+                <div class="testimonial-header">
+                    <div class="client-avatar">مح</div>
+                    <div class="client-info">
+                        <h4>محمد الشمري</h4>
+                        <p>مدير مصنع البلاستيك</p>
+                    </div>
+                </div>
+                <div class="testimonial-content">
+                    <p>"المهندس محمد أنقذنا من خسائر كبيرة عندما أصلح لوحة التحكم الإلكترونية للمصنع خلال ساعات. خبرته الواسعة وفرت علينا تكاليف استبدال كاملة."</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="section-title fade-in">
+            <h2 style="color: var(--dark-bg);">تواصل مع المهندس</h2>
+            <p style="color: #64748b;">أملأ النموذج وسأتواصل معك في أسرع وقت</p>
+        </div>
+        
+        <div class="form-box fade-in" id="booking">
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="cust_name">الاسم الكريم</label>
+                    <input type="text" id="cust_name" placeholder="أدخل اسمك بالكامل" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="cust_phone">رقم الهاتف</label>
+                    <input type="tel" id="cust_phone" placeholder="مثال: 05XXXXXXXX" required>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label for="cust_service">نوع الخدمة المطلوبة</label>
+                <select id="cust_service">
+                    <option value="إصلاح كارت إلكتروني">إصلاح كارت إلكتروني</option>
+                    <option value="صيانة مكيف شاملة">صيانة مكيف شاملة</option>
+                    <option value="شحن غاز وتبريد">شحن غاز وتبريد</option>
+                    <option value="تحسين كفاءة التبريد">تحسين كفاءة التبريد</option>
+                    <option value="صيانة وقائية">صيانة وقائية</option>
+                    <option value="استشارة فنية">استشارة فنية</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="contact_method">طريقة التواصل المفضلة</label>
+                <select id="contact_method" onchange="updateButtonUI()">
+                    <option value="whatsapp">واتساب (WhatsApp)</option>
+                    <option value="call">اتصال هاتفي (Direct Call)</option>
+                    <option value="email">إيميل (Email)</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="cust_msg">وصف المشكلة أو الطلب</label>
+                <textarea id="cust_msg" rows="5" placeholder="اكتب وصفاً مفصلاً للمشكلة أو الخدمة المطلوبة..."></textarea>
+            </div>
+            
+            <button type="button" id="submit_btn" class="submit-btn" onclick="processContact()">
+                <i class="fab fa-whatsapp"></i>
+                إرسال عبر واتساب
+            </button>
+        </div>
+        
+        <div class="contact-options fade-in">
+            <div class="contact-option whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <h4>الواتساب</h4>
+                <p>للرد السريع والمباشر</p>
+                <p style="direction: ltr; margin-top: 10px;">+966 50 000 0000</p>
+            </div>
+            
+            <div class="contact-option call">
+                <i class="fas fa-phone-alt"></i>
+                <h4>اتصال مباشر</h4>
+                <p>من الساعة 8 صباحاً حتى 10 مساءً</p>
+                <p style="direction: ltr; margin-top: 10px;">+966 12 345 6789</p>
+            </div>
+            
+            <div class="contact-option email">
+                <i class="fas fa-envelope"></i>
+                <h4>البريد الإلكتروني</h4>
+                <p>للطلبات الرسمية والاستفسارات</p>
+                <p style="direction: ltr; margin-top: 10px;">mohamed@example.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-cogs"></i>
+                    <span>المهندس محمد طه العلوي</span>
+                </div>
+                <p>خبير أنظمة التبريد والتحكم الإلكتروني. تقديم حلول تقنية مبتكرة بخبرة تزيد عن 15 عاماً في السوق السعودي والخليجي.</p>
+                
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">نبذة عني</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#testimonials">الشهادات</a></li>
+                    <li><a href="#contact">اتصل بي</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>معلومات الاتصال</h4>
+                <p><i class="fas fa-map-marker-alt" style="margin-left: 8px;"></i> المملكة العربية السعودية - جدة</p>
+                <p><i class="fas fa-phone" style="margin-left: 8px;"></i> +966 50 000 0000</p>
+                <p><i class="fas fa-envelope" style="margin-left: 8px;"></i> mohamed@example.com</p>
+                <p><i class="fas fa-clock" style="margin-left: 8px;"></i> الأحد - الخميس: 8 ص - 10 م</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2025 المهندس محمد طه العلوي | جميع الحقوق محفوظة | تصميم وتطوير بخبرة هندسية</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- بيانات التواصل الخاصة بك ---
+        const phoneForWA = "966500000000"; // للواتساب (بدون أصفار أو +)
+        const phoneForCall = "+966500000000"; // للاتصال المباشر (مع رمز الدولة)
+        const myEmail = "mohamed@example.com"; // بريدك الإلكتروني
+
+        // DOM elements
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        // تحديث واجهة زر الإرسال بناءً على طريقة التواصل المختارة
+        function updateButtonUI() {
+            const method = document.getElementById('contact_method').value;
+            const btn = document.getElementById('submit_btn');
+            const btnIcon = btn.querySelector('i');
+            
+            if(method === 'whatsapp') {
+                btn.style.background = "var(--whatsapp-green)";
+                btn.innerHTML = '<i class="fab fa-whatsapp"></i> إرسال عبر واتساب';
+            } else if(method === 'call') {
+                btn.style.background = "var(--call-blue)";
+                btn.innerHTML = '<i class="fas fa-phone-alt"></i> اتصال هاتفي مباشر';
+            } else {
+                btn.style.background = "var(--email-red)";
+                btn.innerHTML = '<i class="fas fa-envelope"></i> إرسال عبر الإيميل';
+            }
+        }
+        
+        // معالجة نموذج الاتصال
+        function processContact() {
+            const name = document.getElementById('cust_name').value;
+            const phone = document.getElementById('cust_phone').value;
+            const service = document.getElementById('cust_service').value;
+            const msg = document.getElementById('cust_msg').value;
+            const method = document.getElementById('contact_method').value;
+
+            if(!name || !phone) {
+                alert("يرجى إدخال اسمك ورقم هاتفك أولاً");
+                return;
+            }
+            
+            // تحقق من صحة رقم الهاتف
+            const phoneRegex = /^(05|5|9665|009665)([0-9]{8})$/;
+            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                alert("يرجى إدخال رقم هاتف سعودي صحيح (مثال: 05XXXXXXXX)");
+                return;
+            }
+
+            const fullContent = `طلب صيانة من الموقع:\n──────────────\n👤 الأسم: ${name}\n📞 الهاتف: ${phone}\n🔧 الخدمة: ${service}\n📝 التفاصيل: ${msg}\n──────────────\n📅 تم الإرسال في: ${new Date().toLocaleString('ar-SA')}`;
+
+            if(method === 'whatsapp') {
+                window.open(`https://wa.me/${phoneForWA}?text=${encodeURIComponent(fullContent)}`, '_blank');
+            } else if(method === 'call') {
+                window.location.href = `tel:${phoneForCall}`;
+            } else if(method === 'email') {
+                window.location.href = `mailto:${myEmail}?subject=طلب صيانة من ${name}&body=${encodeURIComponent(fullContent)}`;
+            }
+        }
+        
+        // تغيير لون شريط التنقل عند التمرير
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // تفعيل تأثيرات fade-in عند التمرير
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        });
+        
+        // تفعيل القائمة المتنقلة للجوّال
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // إغلاق القائمة عند النقر على رابط
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // تفعيل تأثيرات fade-in عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // تفعيل العناصر المرئية عند التحميل
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((element, index) => {
+                setTimeout(() => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                }, index * 100);
+            });
+            
+            // تهيئة زر الإرسال
+            updateButtonUI();
+        });
+        
+        // إضافة تأثير كتابة للنص في قسم البطل
+        const heroTitle = document.querySelector('.hero h1');
+        const originalText = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                heroTitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        // بدء تأثير الكتابة بعد تحميل الصفحة
+        window.addEventListener('load', function() {
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html>
